@@ -48,10 +48,10 @@ for container in ${containers}; do
   fi
   echo "#############################################################################";
   echo "###############/config/startup/startup.d/$container.sh";
-  echo "###############Container: $containerid: tmp/$container.startup.sh";
+  echo "###############Container: $containerid: ~/$container.startup.sh";
   echo "#############################################################################"
 
-  remotePath=/tmp/${container};
+  remotePath=~/${container};
   (for e in "${executeInRootPath[@]}"; do [[ "$e" == ${container} ]] && exit 0; done) && remotePath=/${container};
 
   docker cp /config/startup/startup.d/${container}.sh ${containerid}:${remotePath}.startup.sh;
