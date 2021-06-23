@@ -56,7 +56,7 @@ for container in ${containers}; do
 
   docker cp /config/startup/startup.d/${container}.sh ${containerid}:${remotePath}.startup.sh;
   docker exec -t ${containerid} chmod 755 ${remotePath}.startup.sh;
-  docker exec -t ${containerid} exec ${remotePath}.startup.sh 2>&1 | tee ${logOption} /config/startup/logs/${container}.log &
+  docker exec -t ${containerid} ${remotePath}.startup.sh 2>&1 | tee ${logOption} /config/startup/logs/${container}.log &
   sleep 1;
 
 done;
